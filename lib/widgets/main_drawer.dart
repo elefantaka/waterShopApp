@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water_shop_app/screens/contact_screen.dart';
 import 'package:water_shop_app/screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -51,6 +52,13 @@ class MainDrawer extends StatelessWidget {
             Icons.settings,
             () {
               Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+            },
+          ),
+          buildListTile(
+            'Contact',
+            Icons.contact_phone,
+                () {
+              Navigator.of(context).pushReplacementNamed(ContactScreen.routeName);
             },
           ),
         ],

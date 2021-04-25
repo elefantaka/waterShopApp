@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/data.dart';
 import 'package:water_shop_app/models/product.dart';
+import 'package:water_shop_app/screens/contact_screen.dart';
 import 'package:water_shop_app/screens/filters_screen.dart';
 import 'file:///C:/Work/flutterUdemy/water_shop_app/lib/screens/category_meals_screen.dart';
 import 'package:water_shop_app/screens/meal_detail_screen.dart';
@@ -94,6 +95,7 @@ class _MyAppState extends State<MyApp> {
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(_availableMeals),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavourite, _isMealFavorite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_setFilters, _filters),
+        ContactScreen.routeName: (ctx) => ContactScreen(),
       },
       // onGenerateRoute: (settings) {
       //   print(settings.arguments);

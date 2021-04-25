@@ -31,7 +31,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   Widget _buildSwitchListTile(String title, bool currentValue, Function updateValue) {
     return SwitchListTile(
-      title: Text(title),
+      title: Text(title, style: TextStyle(fontFamily: 'AquinoDemo')),
       value: currentValue,
       //subtitle: Text(description),
       onChanged: updateValue,
