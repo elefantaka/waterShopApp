@@ -4,6 +4,7 @@ import 'package:water_shop_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
+
   final Function saveFilters;
   final Map<String, bool> currentFilters;
 
@@ -14,25 +15,25 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  bool _glutenFree = false;
-  bool _vegetarian = false;
-  bool _vegan = false;
-  bool _lactoseFree = false;
+  bool _women = false;
+  bool _black = false;
+  bool _color = false;
+  bool _men = false;
 
   @override
   initState() {
-    _glutenFree = widget.currentFilters['gluten'];
-    _lactoseFree = widget.currentFilters['lactose'];
-    _vegan = widget.currentFilters['vegan'];
-    _vegetarian = widget.currentFilters['vegetarian'];
+    _women = widget.currentFilters['women'];
+    _men = widget.currentFilters['men'];
+    _color = widget.currentFilters['color'];
+    _black = widget.currentFilters['black'];
     super.initState();
   }
 
-  Widget _buildSwitchListTile(String title, String description, bool currentValue, Function updateValue) {
+  Widget _buildSwitchListTile(String title, bool currentValue, Function updateValue) {
     return SwitchListTile(
       title: Text(title),
       value: currentValue,
-      subtitle: Text(description),
+      //subtitle: Text(description),
       onChanged: updateValue,
     );
   }
@@ -41,16 +42,16 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Filters'),
+        title: Text('Filters'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),
             onPressed: () {
               final selectedFilters = {
-                'gluten': _glutenFree,
-                'lactose': _lactoseFree,
-                'vegan': _vegan,
-                'vegetarian': _vegetarian,
+                'women': _women,
+                'men': _men,
+                'color': _color,
+                'black': _black,
               };
               widget.saveFilters(selectedFilters);
             },
@@ -63,7 +64,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Container(
             padding: EdgeInsets.all(20),
     child: Text(
-              'Adjust your meal selection.',
+              'Product Selection',
               style: Theme.of(context).textTheme.title,
             ),
           ),
@@ -71,49 +72,45 @@ class _FiltersScreenState extends State<FiltersScreen> {
             child: ListView(
               children: <Widget>[
                 _buildSwitchListTile(
-                  'Gluten-free',
-                  'Only gluten-free meals',
-                  _glutenFree,
+                  'Women',
+                  _women,
                   (newValue) {
                     setState(
                       () {
-                        _glutenFree = newValue;
+                        _women = newValue;
                       },
                     );
                   },
                 ),
                 _buildSwitchListTile(
-                  'Lactose-free',
-                  'Only lactose-free meals',
-                  _lactoseFree,
+                  'Men',
+                  _men,
                       (newValue) {
                     setState(
                           () {
-                        _lactoseFree = newValue;
+                        _men = newValue;
                       },
                     );
                   },
                 ),
                 _buildSwitchListTile(
-                  'Vegetarian',
-                  'Only vegetarian meals',
-                  _vegetarian,
+                  'Black',
+                  _black,
                       (newValue) {
                     setState(
                           () {
-                        _vegetarian = newValue;
+                        _black = newValue;
                       },
                     );
                   },
                 ),
                 _buildSwitchListTile(
-                  'Vegan',
-                  'Only vegan meals',
-                  _vegan,
+                  'Color',
+                  _color,
                       (newValue) {
                     setState(
                           () {
-                        _vegan = newValue;
+                        _color = newValue;
                       },
                     );
                   },

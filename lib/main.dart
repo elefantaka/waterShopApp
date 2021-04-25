@@ -17,10 +17,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Map<String, bool> _filters = {
-    'gluten': false,
-    'lactose': false,
-    'vegan': false,
-    'vegetarian': false,
+    'women': false,
+    'men': false,
+    'color': false,
+    'black': false,
   };
 
   List<Product> _availableMeals = PRODUCTS;
@@ -31,16 +31,16 @@ class _MyAppState extends State<MyApp> {
       _filters = filterData;
 
       _availableMeals = PRODUCTS.where((meal)  {
-        if(_filters['gluten'] == true && !meal.isGlutenFree){
+        if(_filters['women'] == true && !meal.isWomen){
           return false;
         }
-        if(_filters['lactose'] == true && !meal.isLactoseFree){
+        if(_filters['men'] == true && !meal.isMen){
           return false;
         }
-        if(_filters['vegetarian'] == true && !meal.isVegetarian){
+        if(_filters['color'] == true && !meal.isColor){
           return false;
         }
-        if(_filters['vegan'] == true && !meal.isVegan){
+        if(_filters['black'] == true && !meal.isBlack){
           return false;
         }
         return true;
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         accentColor: Colors.purple,
         canvasColor: Color.fromRGBO(230, 230, 250, 1),
-        fontFamily: 'Raleway',
+        fontFamily: 'AquinoDemo',
         textTheme: ThemeData.light().textTheme.copyWith(
           body1: TextStyle(color: Color.fromRGBO(153, 50, 204, 1)),
           body2: TextStyle(
@@ -82,8 +82,8 @@ class _MyAppState extends State<MyApp> {
           ),
           title: TextStyle(
             fontSize: 20,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold,
+            fontFamily: 'AquinoDemo',
+            //fontWeight: FontWeight.bold,
           ),
         ),
       ),

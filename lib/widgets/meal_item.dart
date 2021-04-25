@@ -126,7 +126,7 @@ class MealItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$shipping days'),
+                      Text('$shipping days', style: TextStyle(fontFamily: 'AquinoDemo'),),
                     ],
                   ),
                   // Row(
@@ -144,7 +144,7 @@ class MealItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$price'),
+                      Text('$price', style: TextStyle(fontFamily: 'AquinoDemo')),
                     ],
                   ),
                 ],

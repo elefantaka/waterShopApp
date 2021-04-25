@@ -8,7 +8,7 @@ class MainDrawer extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          fontFamily: 'RobotoCondensed',
+          fontFamily: 'AquinoDemo',
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
@@ -27,21 +27,21 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).primaryColor,
             child: Text(
-              'Cooking Up!',
+              'Water Shop',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
-                  color: Theme.of(context).primaryColor),
+                  color: Colors.white),
             ),
           ),
           SizedBox(
             height: 20,
           ),
           buildListTile(
-            'Meals',
-            Icons.restaurant,
+            'Products',
+            Icons.shopping_bag,
             () {
               Navigator.of(context).pushReplacementNamed('/');
             },

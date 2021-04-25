@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/categories_screen.dart';
 import 'package:water_shop_app/screens/favourites_screen.dart';
+import 'package:water_shop_app/screens/filters_screen.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+
   List<Map<String, Object>> _pages;
 
   int _selectedPageIndex = 0;

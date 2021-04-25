@@ -15,10 +15,10 @@ class Product {
   final int price;
   final Complexity complexity;
   final Affordability affordability;
-  final bool isGlutenFree;
-  final bool isLactoseFree;
-  final bool isVegan;
-  final bool isVegetarian;
+  final bool isWomen;
+  final bool isMen;
+  final bool isBlack;
+  final bool isColor;
 
   const Product({
     @required this.id,
@@ -31,9 +31,9 @@ class Product {
     @required this.price,
     @required this.complexity,
     @required this.affordability,
-    @required this.isGlutenFree,
-    @required this.isLactoseFree,
-    @required this.isVegan,
-    @required this.isVegetarian,
+    @required this.isWomen,
+    @required this.isMen,
+    @required this.isBlack,
+    @required this.isColor,
   });
 }
