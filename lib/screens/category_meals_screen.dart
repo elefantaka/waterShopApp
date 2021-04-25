@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:water_shop_app/data.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 
 //import '../data.dart';
 import '../widgets/meal_item.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
 
-  final List<Meal> availableMeals;
+  final List<Product> availableMeals;
 
   CategoryMealsScreen(this.availableMeals);
 
@@ -20,7 +20,7 @@ class CategoryMealsScreen extends StatefulWidget {
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   String categoryTitle;
-  List<Meal> displayedMeals;
+  List<Product> displayedMeals;
   var _loadedInitData = false;
 
   @override
@@ -65,7 +65,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
             id: displayedMeals[index].id,
             title: displayedMeals[index].title,
             imageUrl: displayedMeals[index].imageUrl,
-            duration: displayedMeals[index].duration,
+            shipping: displayedMeals[index].shipping,
             complexity: displayedMeals[index].complexity,
             affordability: displayedMeals[index].affordability,
           );

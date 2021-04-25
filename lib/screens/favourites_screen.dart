@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/widgets/meal_item.dart';
 
 class FavouritesScreen extends StatelessWidget {
-  final List<Meal> favouriteMeals;
+  final List<Product> favouriteMeals;
 
   FavouritesScreen(this.favouriteMeals);
 
@@ -20,7 +20,7 @@ class FavouritesScreen extends StatelessWidget {
             id: favouriteMeals[index].id,
             title: favouriteMeals[index].title,
             imageUrl: favouriteMeals[index].imageUrl,
-            duration: favouriteMeals[index].duration,
+            shipping: favouriteMeals[index].shipping,
             complexity: favouriteMeals[index].complexity,
             affordability: favouriteMeals[index].affordability,
           );

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/meal_detail_screen.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
   final String title;
   final String imageUrl;
-  final int duration;
+  final int shipping;
+  final int price;
   final Complexity complexity;
   final Affordability affordability;
 
@@ -14,7 +15,8 @@ class MealItem extends StatelessWidget {
     @required this.id,
     @required this.title,
     @required this.imageUrl,
-    @required this.duration,
+    @required this.shipping,
+    @required this.price,
     @required this.complexity,
     @required this.affordability,
   });
@@ -92,9 +94,9 @@ class MealItem extends StatelessWidget {
                   ),
                   child: Image.network(
                     imageUrl,
-                    height: 250,
+                    height: 300,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
                 Positioned(
@@ -120,29 +122,29 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
+                      Icon(Icons.local_shipping_sharp),
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$duration min'),
+                      Text('$shipping days'),
                     ],
                   ),
+                  // Row(
+                  //   children: <Widget>[
+                  //     Icon(Icons.work),
+                  //     SizedBox(
+                  //       width: 6,
+                  //     ),
+                  //     Text(complexityText),
+                  //   ],
+                  // ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(Icons.euro_outlined),
                       SizedBox(
                         width: 6,
                       ),
-                      Text(complexityText),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.attach_money),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Text(affordabilityText),
+                      Text('$price'),
                     ],
                   ),
                 ],

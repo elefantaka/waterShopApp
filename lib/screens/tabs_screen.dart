@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/categories_screen.dart';
 import 'package:water_shop_app/screens/favourites_screen.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
-  final List<Meal> favouriteMeals;
+  final List<Product> favouriteMeals;
 
   TabsScreen(this.favouriteMeals);
 

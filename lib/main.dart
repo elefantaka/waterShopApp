@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/data.dart';
-import 'package:water_shop_app/models/meal.dart';
+import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/filters_screen.dart';
 import 'file:///C:/Work/flutterUdemy/water_shop_app/lib/screens/category_meals_screen.dart';
 import 'package:water_shop_app/screens/meal_detail_screen.dart';
@@ -23,14 +23,14 @@ class _MyAppState extends State<MyApp> {
     'vegetarian': false,
   };
 
-  List<Meal> _availableMeals = DUMMY_MEALS;
-  List<Meal> _favouriteMeals = [];
+  List<Product> _availableMeals = PRODUCTS;
+  List<Product> _favouriteMeals = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
       _filters = filterData;
 
-      _availableMeals = DUMMY_MEALS.where((meal)  {
+      _availableMeals = PRODUCTS.where((meal)  {
         if(_filters['gluten'] == true && !meal.isGlutenFree){
           return false;
         }
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
     }
     else{
       setState(() {
-        _favouriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+        _favouriteMeals.add(PRODUCTS.firstWhere((meal) => meal.id == mealId));
       });
     }
   }
@@ -69,9 +69,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DeliMeals',
+      title: 'Water Shop',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.blue,
         accentColor: Colors.purple,
         canvasColor: Color.fromRGBO(230, 230, 250, 1),
         fontFamily: 'Raleway',
@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DeliMeals'),
+        title: Text('Water Shop'),
       ),
       body: Center(
         child: Text('Navigation Time!'),
