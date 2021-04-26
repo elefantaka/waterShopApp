@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/data.dart';
 
-class MealDetailScreen extends StatelessWidget {
-  static const routeName = '/meal-detail';
+class ProductDetailScreen extends StatelessWidget {
+  static const routeName = '/product-detail';
 
   final Function toggleFavourite;
   final Function isFavourite;
 
-  MealDetailScreen(this.toggleFavourite, this.isFavourite);
+  ProductDetailScreen(this.toggleFavourite, this.isFavourite);
 
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
@@ -36,11 +36,11 @@ class MealDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mealId = ModalRoute.of(context).settings.arguments as String;
-    final selectedMeal = PRODUCTS.firstWhere((meal) => meal.id == mealId);
+    final productId = ModalRoute.of(context).settings.arguments as String;
+    final selectedProduct = PRODUCTS.firstWhere((product) => product.id == productId);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectedMeal.title}'),
+        title: Text('${selectedProduct.title}'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +48,7 @@ class MealDetailScreen extends StatelessWidget {
             Container(
               height: 400,
               width: double.infinity,
-              child: Image.network(selectedMeal.imageUrl, fit: BoxFit.fitHeight),
+              child: Image.network(selectedProduct.imageUrl, fit: BoxFit.fitHeight),
             ),
             //buildSectionTitle(context, 'Ingrediets'),
             // buildContainer(
@@ -75,13 +75,13 @@ class MealDetailScreen extends StatelessWidget {
                         child: Text('${(index + 1)}'),
                       ),
                       title: Text(
-                        selectedMeal.materials[index],
+                        selectedProduct.materials[index],
                       ),
                     ),
                     Divider(),
                   ],
                 ),
-                itemCount: selectedMeal.materials.length,
+                itemCount: selectedProduct.materials.length,
               ),
             ),
           ],
@@ -89,9 +89,9 @@ class MealDetailScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
-          isFavourite(mealId) ? Icons.star : Icons.star_border,
+          isFavourite(productId) ? Icons.star : Icons.star_border,
         ),
-        onPressed: () => toggleFavourite(mealId),
+        onPressed: () => toggleFavourite(productId),
       ),
     );
   }

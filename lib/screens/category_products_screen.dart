@@ -1,26 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:water_shop_app/data.dart';
 import 'package:water_shop_app/models/product.dart';
+import 'package:flutter/cupertino.dart';
+
 
 //import '../data.dart';
-import '../widgets/meal_item.dart';
+import '../widgets/product_item.dart';
 import 'package:water_shop_app/models/product.dart';
 
-class CategoryMealsScreen extends StatefulWidget {
-  static const routeName = '/category-meals';
+class CategoryProductsScreen extends StatefulWidget {
+  static const routeName = '/category-products';
 
-  final List<Product> availableMeals;
+  final List<Product> availableProducts;
 
-  CategoryMealsScreen(this.availableMeals);
+  CategoryProductsScreen(this.availableProducts);
 
   @override
-  _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
+  _CategoryProductsScreenState createState() => _CategoryProductsScreenState();
 }
 
-class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   String categoryTitle;
-  List<Product> displayedMeals;
+  List<Product> displayedProducts;
   var _loadedInitData = false;
 
   @override
@@ -37,19 +41,19 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
           .arguments as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryId = routeArgs['id'];
-      displayedMeals = widget.availableMeals.where((meal) {
-        return meal.categories.contains(categoryId);
+      displayedProducts = widget.availableProducts.where((product) {
+        return product.categories.contains(categoryId);
       }).toList();
       _loadedInitData = true;
     }
     super.didChangeDependencies();
   }
 
-  void _removeMeal(String mealId){
-    setState(() {
-      displayedMeals.removeWhere((meal) => meal.id == mealId);
-    });
-  }
+  // void _removeMeal(String mealId){
+  //   setState(() {
+  //     displayedProducts.removeWhere((meal) => meal.id == mealId);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +65,17 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
-          return MealItem(
-            id: displayedMeals[index].id,
-            title: displayedMeals[index].title,
-            imageUrl: displayedMeals[index].imageUrl,
-            shipping: displayedMeals[index].shipping,
-            price: displayedMeals[index].price,
+          return ProductItem(
+            id: displayedProducts[index].id,
+            title: displayedProducts[index].title,
+            imageUrl: displayedProducts[index].imageUrl,
+            shipping: displayedProducts[index].shipping,
+            price: displayedProducts[index].price,
             //complexity: displayedMeals[index].complexity,
             //affordability: displayedMeals[index].affordability,
           );
         },
-        itemCount: displayedMeals.length,
+        itemCount: displayedProducts.length,
       ),
     );
   }

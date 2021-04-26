@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/models/product.dart';
-import 'package:water_shop_app/screens/meal_detail_screen.dart';
+import 'package:water_shop_app/screens/product_detail_screen.dart';
 
-class MealItem extends StatelessWidget {
+class ProductItem extends StatelessWidget {
   final String id;
   final String title;
   final String imageUrl;
   final int shipping;
   final int price;
-  final Complexity complexity;
-  final Affordability affordability;
+  // final Complexity complexity;
+  // final Affordability affordability;
 
-  MealItem({
+  ProductItem({
     @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.shipping,
     @required this.price,
-    @required this.complexity,
-    @required this.affordability,
+    // @required this.complexity,
+    // @required this.affordability,
   });
 
-  String get complexityText {
-    switch (complexity) {
-      case Complexity.Simple:
-        return 'Simple';
-        break;
-      case Complexity.Challenging:
-        return 'Challenging';
-        break;
-      case Complexity.Hard:
-        return 'Hard';
-        break;
-      default:
-        return 'Unknown';
-    }
+  // String get complexityText {
+  //   switch (complexity) {
+  //     case Complexity.Simple:
+  //       return 'Simple';
+  //       break;
+  //     case Complexity.Challenging:
+  //       return 'Challenging';
+  //       break;
+  //     case Complexity.Hard:
+  //       return 'Hard';
+  //       break;
+  //     default:
+  //       return 'Unknown';
+  //   }
     // if(complexity == Complexity.Simple){
     //   return 'Simple';
     // }
@@ -44,27 +44,27 @@ class MealItem extends StatelessWidget {
     // if(complexity == Complexity.Hard){
     //   return 'Hard';
     // }
-  }
+  //}
 
-  String get affordabilityText {
-    switch (affordability) {
-      case Affordability.Affordable:
-        return 'Affordable';
-        break;
-      case Affordability.Pricey:
-        return 'Pricey';
-        break;
-      case Affordability.Luxurious:
-        return 'Luxurious';
-        break;
-      default:
-        return 'Unknown';
-    }
-  }
+  // String get affordabilityText {
+  //   switch (affordability) {
+  //     case Affordability.Affordable:
+  //       return 'Affordable';
+  //       break;
+  //     case Affordability.Pricey:
+  //       return 'Pricey';
+  //       break;
+  //     case Affordability.Luxurious:
+  //       return 'Luxurious';
+  //       break;
+  //     default:
+  //       return 'Unknown';
+  //   }
+  // }
 
-  void selectMeal(BuildContext context) {
+  void selectProduct(BuildContext context) {
     Navigator.of(context).pushNamed(
-      MealDetailScreen.routeName,
+      ProductDetailScreen.routeName,
       arguments: id,
     ).then((result) {
     if(result != null){
@@ -76,7 +76,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => selectMeal(context),
+      onTap: () => selectProduct(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),

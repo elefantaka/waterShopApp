@@ -5,8 +5,8 @@ import 'package:water_shop_app/data.dart';
 import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/contact_screen.dart';
 import 'package:water_shop_app/screens/filters_screen.dart';
-import 'file:///C:/Work/flutterUdemy/water_shop_app/lib/screens/category_meals_screen.dart';
-import 'package:water_shop_app/screens/meal_detail_screen.dart';
+import 'package:water_shop_app/screens/category_products_screen.dart';
+import 'package:water_shop_app/screens/product_detail_screen.dart';
 import 'package:water_shop_app/screens/tabs_screen.dart';
 
 void main() => runApp(MyApp());
@@ -24,24 +24,24 @@ class _MyAppState extends State<MyApp> {
     'black': false,
   };
 
-  List<Product> _availableMeals = PRODUCTS;
-  List<Product> _favouriteMeals = [];
+  List<Product> _availableProducts = PRODUCTS;
+  List<Product> _favouriteProducts = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
       _filters = filterData;
 
-      _availableMeals = PRODUCTS.where((meal)  {
-        if(_filters['women'] == true && !meal.isWomen){
+      _availableProducts = PRODUCTS.where((product)  {
+        if(_filters['women'] == true && !product.isWomen){
           return false;
         }
-        if(_filters['men'] == true && !meal.isMen){
+        if(_filters['men'] == true && !product.isMen){
           return false;
         }
-        if(_filters['color'] == true && !meal.isColor){
+        if(_filters['color'] == true && !product.isColor){
           return false;
         }
-        if(_filters['black'] == true && !meal.isBlack){
+        if(_filters['black'] == true && !product.isBlack){
           return false;
         }
         return true;
@@ -49,20 +49,20 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  bool _isMealFavorite(String id){
-    return _favouriteMeals.any((meal) => meal.id == id);
+  bool _isProductFavourite(String id){
+    return _favouriteProducts.any((product) => product.id == id);
   }
 
-  void _toggleFavourite(String mealId){
-    final existingIndex = _favouriteMeals.indexWhere((meal) => meal.id == mealId);
+  void _toggleFavourite(String productId){
+    final existingIndex = _favouriteProducts.indexWhere((product) => product.id == productId);
     if(existingIndex >= 0){
       setState(() {
-        _favouriteMeals.removeAt(existingIndex);
+        _favouriteProducts.removeAt(existingIndex);
       });
     }
     else{
       setState(() {
-        _favouriteMeals.add(PRODUCTS.firstWhere((meal) => meal.id == mealId));
+        _favouriteProducts.add(PRODUCTS.firstWhere((product) => product.id == productId));
       });
     }
   }
@@ -91,9 +91,9 @@ class _MyAppState extends State<MyApp> {
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(_favouriteMeals),
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavourite, _isMealFavorite),
+        '/': (ctx) => TabsScreen(_favouriteProducts),
+        CategoryProductsScreen.routeName: (ctx) => CategoryProductsScreen(_availableProducts),
+        ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(_toggleFavourite, _isProductFavourite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_setFilters, _filters),
         ContactScreen.routeName: (ctx) => ContactScreen(),
       },

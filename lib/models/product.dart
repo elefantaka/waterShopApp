@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-enum Complexity { Simple, Challenging, Hard }
-
-enum Affordability { Affordable, Pricey, Luxurious }
+// enum Complexity { Simple, Challenging, Hard }
+//
+// enum Affordability { Affordable, Pricey, Luxurious }
 
 class Product {
   final String id;
@@ -13,8 +13,8 @@ class Product {
   final List<String> materials;
   final int shipping;
   final int price;
-  final Complexity complexity;
-  final Affordability affordability;
+  // final Complexity complexity;
+  // final Affordability affordability;
   final bool isWomen;
   final bool isMen;
   final bool isBlack;
@@ -29,8 +29,8 @@ class Product {
     @required this.materials,
     @required this.shipping,
     @required this.price,
-    @required this.complexity,
-    @required this.affordability,
+    // @required this.complexity,
+    // @required this.affordability,
     @required this.isWomen,
     @required this.isMen,
     @required this.isBlack,

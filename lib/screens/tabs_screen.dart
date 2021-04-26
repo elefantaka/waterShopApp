@@ -6,9 +6,9 @@ import 'package:water_shop_app/screens/filters_screen.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
-  final List<Product> favouriteMeals;
+  final List<Product> favouriteProducts;
 
-  TabsScreen(this.favouriteMeals);
+  TabsScreen(this.favouriteProducts);
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -24,7 +24,7 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages  = [
       {'page': CategoriesScreen(), 'title': 'Categories'},
-      {'page': FavouritesScreen(widget.favouriteMeals), 'title': 'Your Favourite'},
+      {'page': FavouritesScreen(widget.favouriteProducts), 'title': 'Your Favourite'},
     ];
     super.initState();
   }

@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/models/product.dart';
-import 'package:water_shop_app/widgets/meal_item.dart';
+import 'package:water_shop_app/widgets/product_item.dart';
 
 class FavouritesScreen extends StatelessWidget {
-  final List<Product> favouriteMeals;
+  final List<Product> favouriteProducts;
 
-  FavouritesScreen(this.favouriteMeals);
+  FavouritesScreen(this.favouriteProducts);
 
   @override
   Widget build(BuildContext context) {
-    if(favouriteMeals.isEmpty){
+    if(favouriteProducts.isEmpty){
       return Center(
         child: Text('You have no favourites yet!'),
       );
     } else {
       return ListView.builder(
         itemBuilder: (ctx, index) {
-          return MealItem(
-            id: favouriteMeals[index].id,
-            title: favouriteMeals[index].title,
-            imageUrl: favouriteMeals[index].imageUrl,
-            shipping: favouriteMeals[index].shipping,
-            price: favouriteMeals[index].price,
+          return ProductItem(
+            id: favouriteProducts[index].id,
+            title: favouriteProducts[index].title,
+            imageUrl: favouriteProducts[index].imageUrl,
+            shipping: favouriteProducts[index].shipping,
+            price: favouriteProducts[index].price,
             // complexity: favouriteMeals[index].complexity,
             // affordability: favouriteMeals[index].affordability,
           );
         },
-        itemCount: favouriteMeals.length,
+        itemCount: favouriteProducts.length,
       );
     }
   }
