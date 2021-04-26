@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:water_shop_app/data.dart';
+//import 'package:flutter/foundation.dart';
+//import 'package:water_shop_app/data.dart';
 import 'package:water_shop_app/models/product.dart';
 import 'package:flutter/cupertino.dart';
 
 
 //import '../data.dart';
 import '../widgets/product_item.dart';
-import 'package:water_shop_app/models/product.dart';
+//import 'package:water_shop_app/models/product.dart';
 
 class CategoryProductsScreen extends StatefulWidget {
   static const routeName = '/category-products';
@@ -57,26 +57,56 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          categoryTitle,
-        ),
-      ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return ProductItem(
-            id: displayedProducts[index].id,
-            title: displayedProducts[index].title,
-            imageUrl: displayedProducts[index].imageUrl,
-            shipping: displayedProducts[index].shipping,
-            price: displayedProducts[index].price,
-            //complexity: displayedMeals[index].complexity,
-            //affordability: displayedMeals[index].affordability,
+    final PreferredSizeWidget appBar = Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: Text(categoryTitle),
+          )
+        : AppBar(
+            //backgroundColor: Colors.purpleAccent,
+            title: Text(
+              categoryTitle,
+            ),
           );
-        },
-        itemCount: displayedProducts.length,
-      ),
+
+    final pageBody = ListView.builder(
+      itemBuilder: (ctx, index) {
+        return ProductItem(
+          id: displayedProducts[index].id,
+          title: displayedProducts[index].title,
+          imageUrl: displayedProducts[index].imageUrl,
+          shipping: displayedProducts[index].shipping,
+          price: displayedProducts[index].price,
+          //complexity: displayedMeals[index].complexity,
+          //affordability: displayedMeals[index].affordability,
+        );
+      },
+      itemCount: displayedProducts.length,
     );
+
+    return Platform.isIOS
+        ? CupertinoPageScaffold(child: pageBody, navigationBar: appBar,)
+        : Scaffold(appBar: appBar, body: pageBody,);
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text(
+    //       categoryTitle,
+    //     ),
+    //   ),
+      // body: ListView.builder(
+      //   itemBuilder: (ctx, index) {
+      //     return ProductItem(
+      //       id: displayedProducts[index].id,
+      //       title: displayedProducts[index].title,
+      //       imageUrl: displayedProducts[index].imageUrl,
+      //       shipping: displayedProducts[index].shipping,
+      //       price: displayedProducts[index].price,
+      //       //complexity: displayedMeals[index].complexity,
+      //       //affordability: displayedMeals[index].affordability,
+      //     );
+      //   },
+      //   itemCount: displayedProducts.length,
+      // ),
+    //);
   }
 }
