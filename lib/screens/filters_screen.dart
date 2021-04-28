@@ -58,12 +58,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ),
         ],
       ),
-      drawer: MainDrawer(),
+      //drawer: MainDrawer(),
       body: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(20),
-    child: Text(
+            child: Text(
               'Product Selection',
               style: Theme.of(context).textTheme.title,
             ),
@@ -74,9 +74,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 _buildSwitchListTile(
                   'Women',
                   _women,
-                  (newValue) {
+                      (newValue) {
                     setState(
-                      () {
+                          () {
                         _women = newValue;
                       },
                     );

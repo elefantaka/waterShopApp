@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //import 'package:water_shop_app/data.dart';
 import 'package:water_shop_app/models/product.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:water_shop_app/widgets/main_drawer.dart';
 
 
 //import '../data.dart';
@@ -59,7 +60,8 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text(categoryTitle),
+        middle: Text(categoryTitle),
+        leading: MainDrawer(),
           )
         : AppBar(
             //backgroundColor: Colors.purpleAccent,

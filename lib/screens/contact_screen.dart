@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
 
@@ -21,12 +24,59 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contact'),
-      ),
-      drawer: MainDrawer(),
-        body: Column(
+    // final PreferredSizeWidget appBar = Platform.isIOS
+    //     ? CupertinoNavigationBar(
+    //         middle: Text('Contact'),
+    //       )
+    //     : AppBar(
+    //         //backgroundColor: Colors.purpleAccent,
+    //         title: Text(
+    //           'Contact',
+    //         ),
+    //       );
+    //
+    // final pageBody = Column(
+    //   children: <Widget>[
+    //     Center(
+    //       child: Container(
+    //         padding: EdgeInsets.all(20),
+    //         child: Text(
+    //           'Contact us!',
+    //           style: Theme.of(context).textTheme.title,
+    //         ),
+    //       ),
+    //     ),
+    //     SizedBox(
+    //       height: 20,
+    //     ),
+    //     Container(
+    //       decoration: BoxDecoration(
+    //         color: Color.fromRGBO(255, 174, 201, 1),
+    //         border: Border.all(color: Colors.grey),
+    //         borderRadius: BorderRadius.circular(10),
+    //       ),
+    //       height: 180,
+    //       width: 400,
+    //       child: Column(
+    //         children: <Widget>[
+    //           buildListTile('666-666-666', Icons.phone),
+    //           buildListTile('watershop@gmail.com', Icons.email),
+    //           buildListTile('watershop.com', Icons.web),
+    //         ],
+    //       ),
+    //     ),
+    //   ],
+    // );
+    //
+    // return Platform.isIOS
+    //     ? CupertinoPageScaffold(child: pageBody, navigationBar: appBar,)
+    //     : Scaffold(appBar: appBar, drawer: MainDrawer(), body: pageBody,);
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text('Contact'),
+    //   ),
+    //   drawer: MainDrawer(),
+        return Column(
             children: <Widget>[
               Center(
                 child: Container(
@@ -57,7 +107,7 @@ class ContactScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      //),
     );
   }
 }
