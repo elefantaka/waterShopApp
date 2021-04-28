@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/models/product.dart';
 import 'package:water_shop_app/screens/product_detail_screen.dart';
@@ -123,7 +126,7 @@ class ProductItem extends StatelessWidget {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Icon(Icons.local_shipping_sharp),
+                        Icon(Platform.isIOS ? CupertinoIcons.airplane : Icons.local_shipping_sharp),
                         SizedBox(
                           width: 6,
                         ),
@@ -141,7 +144,7 @@ class ProductItem extends StatelessWidget {
                     // ),
                     Row(
                       children: <Widget>[
-                        Icon(Icons.euro_outlined),
+                        Icon(Platform.isIOS ? CupertinoIcons.money_euro : Icons.euro_outlined),
                         SizedBox(
                           width: 6,
                         ),

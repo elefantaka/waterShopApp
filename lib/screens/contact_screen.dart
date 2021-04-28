@@ -15,7 +15,6 @@ class ContactScreen extends StatelessWidget {
         style: TextStyle(
           //fontFamily: 'AquinoDemo',
           fontSize: 20,
-
           fontWeight: FontWeight.bold,
         ),
       ),

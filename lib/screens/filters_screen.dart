@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:water_shop_app/screens/category_products_screen.dart';
+import 'package:water_shop_app/widgets/cupertino_switch_list_tile.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
@@ -32,54 +34,71 @@ class _FiltersScreenState extends State<FiltersScreen> {
   }
 
   Widget _buildSwitchListTile(String title, bool currentValue, Function updateValue) {
-    return SwitchListTile(
-      title: Text(title, style: TextStyle(fontFamily: 'AquinoDemo')),
-      value: currentValue,
-      //subtitle: Text(description),
-      onChanged: updateValue,
-    );
+    return Platform.isIOS
+        ? new CupertinoSwitchListTile(
+            title: Text(title, style: TextStyle(fontFamily: 'AquinoDemo')),
+            value: currentValue,
+            //subtitle: Text(description),
+            onChanged: updateValue,
+          )
+        : SwitchListTile(
+            title: Text(title, style: TextStyle(fontFamily: 'AquinoDemo')),
+            value: currentValue,
+            //subtitle: Text(description),
+            onChanged: updateValue,
+          );
   }
 
   @override
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar = Platform.isIOS
-    ? CupertinoNavigationBar(middle: Text('Filters'), leading: GestureDetector( child: Card(
-      color: Colors.transparent,
-      shadowColor: Colors.transparent,
-      child: Row(
-          children: <Widget>[
-      IconButton(
-      icon: Icon(CupertinoIcons.doc), onPressed: () {
-        final selectedFilters = {
-          'women': _women,
-          'men': _men,
-          'color': _color,
-          'black': _black,
-        };
-        widget.saveFilters(selectedFilters);
-      },
-      ),
-          ],),
-    ),
-    ),
-    )
+        ? CupertinoNavigationBar(
+            middle: Text('Filters'),
+            leading: GestureDetector(
+              child: Card(
+                color: Colors.transparent,
+                shadowColor: Colors.transparent,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(CupertinoIcons.left_chevron),
+                      onPressed: () => Navigator.of(context).pop(CategoryProductsScreen.routeName),
+                    ),
+                    IconButton(
+                      icon: Icon(CupertinoIcons.doc),
+                      onPressed: () {
+                        final selectedFilters = {
+                          'women': _women,
+                          'men': _men,
+                          'color': _color,
+                          'black': _black,
+                        };
+                        widget.saveFilters(selectedFilters);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         : AppBar(
-      title: Text('Filters'),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.save),
-          onPressed: () {
-            final selectedFilters = {
-              'women': _women,
-              'men': _men,
-              'color': _color,
-              'black': _black,
-            };
-            widget.saveFilters(selectedFilters);
-          },
-        ),
-      ],
-    );
+            title: Text('Filters'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.save),
+                onPressed: () {
+                  final selectedFilters = {
+                    'women': _women,
+                    'men': _men,
+                    'color': _color,
+                    'black': _black,
+                  };
+                  widget.saveFilters(selectedFilters);
+                },
+              ),
+            ],
+          );
     return Scaffold(
       appBar: appBar,
       // AppBar(
@@ -115,9 +134,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 _buildSwitchListTile(
                   'Women',
                   _women,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _women = newValue;
                       },
                     );
@@ -126,9 +145,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 _buildSwitchListTile(
                   'Men',
                   _men,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _men = newValue;
                       },
                     );
@@ -137,9 +156,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 _buildSwitchListTile(
                   'Black',
                   _black,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _black = newValue;
                       },
                     );
@@ -148,9 +167,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 _buildSwitchListTile(
                   'Color',
                   _color,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _color = newValue;
                       },
                     );

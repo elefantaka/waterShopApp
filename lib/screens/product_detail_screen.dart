@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/data.dart';
 
@@ -38,10 +41,16 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context).settings.arguments as String;
     final selectedProduct = PRODUCTS.firstWhere((product) => product.id == productId);
+    final PreferredSizeWidget appBar = Platform.isIOS
+    ? CupertinoNavigationBar(middle: Text('${selectedProduct.title}'),)
+    : AppBar(
+      title: Text('${selectedProduct.title}'),
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${selectedProduct.title}'),
-      ),
+      appBar: appBar,
+      // AppBar(
+      //   title: Text('${selectedProduct.title}'),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -87,12 +96,19 @@ class ProductDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          isFavourite(productId) ? Icons.star : Icons.star_border,
-        ),
-        onPressed: () => toggleFavourite(productId),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? CupertinoButton(
+              child: Icon(
+                isFavourite(productId) ? Icons.star : Icons.star_border,
+              ),
+              onPressed: toggleFavourite(productId),
+            )
+          : FloatingActionButton(
+              child: Icon(
+                isFavourite(productId) ? Icons.star : Icons.star_border,
+              ),
+              onPressed: () => toggleFavourite(productId),
+            ),
     );
   }
 }
