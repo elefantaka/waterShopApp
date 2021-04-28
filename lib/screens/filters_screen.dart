@@ -99,9 +99,72 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ),
             ],
           );
-    return Scaffold(
-      appBar: appBar,
-      // AppBar(
+
+    final bodyPage = Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(20),
+          child: Text(
+            'Product Selection',
+            style: Theme.of(context).textTheme.title,
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            children: <Widget>[
+              _buildSwitchListTile(
+                'Women',
+                _women,
+                    (newValue) {
+                  setState(
+                        () {
+                      _women = newValue;
+                    },
+                  );
+                },
+              ),
+              _buildSwitchListTile(
+                'Men',
+                _men,
+                    (newValue) {
+                  setState(
+                        () {
+                      _men = newValue;
+                    },
+                  );
+                },
+              ),
+              _buildSwitchListTile(
+                'Black',
+                _black,
+                    (newValue) {
+                  setState(
+                        () {
+                      _black = newValue;
+                    },
+                  );
+                },
+              ),
+              _buildSwitchListTile(
+                'Color',
+                _color,
+                    (newValue) {
+                  setState(
+                        () {
+                      _color = newValue;
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+    return Platform.isIOS
+    ? CupertinoPageScaffold(navigationBar: appBar, child: bodyPage,)
+        : Scaffold(appBar: appBar, body: bodyPage);
+    // AppBar(
       //   title: Text('Filters'),
       //   actions: <Widget>[
       //     IconButton(
@@ -119,67 +182,67 @@ class _FiltersScreenState extends State<FiltersScreen> {
       //   ],
       // ),
       //drawer: MainDrawer(),
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              'Product Selection',
-              style: Theme.of(context).textTheme.title,
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                _buildSwitchListTile(
-                  'Women',
-                  _women,
-                  (newValue) {
-                    setState(
-                      () {
-                        _women = newValue;
-                      },
-                    );
-                  },
-                ),
-                _buildSwitchListTile(
-                  'Men',
-                  _men,
-                  (newValue) {
-                    setState(
-                      () {
-                        _men = newValue;
-                      },
-                    );
-                  },
-                ),
-                _buildSwitchListTile(
-                  'Black',
-                  _black,
-                  (newValue) {
-                    setState(
-                      () {
-                        _black = newValue;
-                      },
-                    );
-                  },
-                ),
-                _buildSwitchListTile(
-                  'Color',
-                  _color,
-                  (newValue) {
-                    setState(
-                      () {
-                        _color = newValue;
-                      },
-                    );
-                  },
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+
+        //Column(
+      //   children: <Widget>[
+      //     Container(
+      //       padding: EdgeInsets.all(20),
+      //       child: Text(
+      //         'Product Selection',
+      //         style: Theme.of(context).textTheme.title,
+      //       ),
+      //     ),
+      //     Expanded(
+      //       child: ListView(
+      //         children: <Widget>[
+      //           _buildSwitchListTile(
+      //             'Women',
+      //             _women,
+      //             (newValue) {
+      //               setState(
+      //                 () {
+      //                   _women = newValue;
+      //                 },
+      //               );
+      //             },
+      //           ),
+      //           _buildSwitchListTile(
+      //             'Men',
+      //             _men,
+      //             (newValue) {
+      //               setState(
+      //                 () {
+      //                   _men = newValue;
+      //                 },
+      //               );
+      //             },
+      //           ),
+      //           _buildSwitchListTile(
+      //             'Black',
+      //             _black,
+      //             (newValue) {
+      //               setState(
+      //                 () {
+      //                   _black = newValue;
+      //                 },
+      //               );
+      //             },
+      //           ),
+      //           _buildSwitchListTile(
+      //             'Color',
+      //             _color,
+      //             (newValue) {
+      //               setState(
+      //                 () {
+      //                   _color = newValue;
+      //                 },
+      //               );
+      //             },
+      //           ),
+      //         ],
+      //       ),
+      //     )
+      //   ],
+      // ),
   }
 }

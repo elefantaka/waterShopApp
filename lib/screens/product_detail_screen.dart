@@ -101,7 +101,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Icon(
                 isFavourite(productId) ? Icons.star : Icons.star_border,
               ),
-              onPressed: toggleFavourite(productId),
+              onPressed: () => toggleFavourite(productId),
             )
           : FloatingActionButton(
               child: Icon(
