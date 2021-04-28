@@ -94,71 +94,41 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final PreferredSizeWidget navBar = Platform.isIOS
-    //     ? CupertinoTabBar(onTap: _selectPage,
-    //   backgroundColor: Colors.blue, //Theme.of(context).primaryColor,
-    //   currentIndex: _selectedPageIndex, items: <BottomNavigationBarItem>[
-    //     BottomNavigationBarItem(
-    //       backgroundColor: Theme
-    //           .of(context)
-    //           .primaryColor,
-    //       icon: Icon(CupertinoIcons.circle_grid_3x3),
-    //       title: Text('Categories'),
-    //     ),
-    //     BottomNavigationBarItem(
-    //       //backgroundColor: Theme.of(context).primaryColor,
-    //       icon: Icon(CupertinoIcons.star),
-    //       title: Text('Favourites'),
-    //     ),
-    //     BottomNavigationBarItem(
-    //       //backgroundColor: Theme.of(context).primaryColor,
-    //       icon: Icon(CupertinoIcons.person_crop_rectangle),
-    //       title: Text('Contact'),
-    //     ),
-    //   ],)
-    //     : BottomNavigationBar(
-    //   onTap: _selectPage,
-    //   backgroundColor: Colors.blue,
-    //   //Theme.of(context).primaryColor,
-    //   unselectedItemColor: Colors.white,
-    //   selectedItemColor: Theme
-    //       .of(context)
-    //       .accentColor,
-    //   currentIndex: _selectedPageIndex,
-    //   //type: BottomNavigationBarType.shifting,
-    //   items: [
-    //     BottomNavigationBarItem(
-    //       backgroundColor: Theme
-    //           .of(context)
-    //           .primaryColor,
-    //       icon: Icon(Icons.category),
-    //       title: Text('Categories'),
-    //     ),
-    //     BottomNavigationBarItem(
-    //       //backgroundColor: Theme.of(context).primaryColor,
-    //       icon: Icon(Icons.star),
-    //       title: Text('Favourites'),
-    //     ),
-    //     BottomNavigationBarItem(
-    //       //backgroundColor: Theme.of(context).primaryColor,
-    //       icon: Icon(Icons.contact_phone),
-    //       title: Text('Contact'),
-    //     ),
-    //   ],
-    // );
-
-
+    final PreferredSizeWidget appBar = Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: Text(_pages[_selectedPageIndex]['title']),
+            leading: GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(CupertinoIcons.arrow_right_arrow_left),
+                    onPressed: () => Navigator.of(context).pushNamed(FiltersScreen.routeName),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : AppBar(
+            title: Text(_pages[_selectedPageIndex]['title']),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.sync_alt),
+                onPressed: () => Navigator.of(context).pushNamed(FiltersScreen.routeName),
+              ),
+            ],
+          );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title']),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.sync_alt),
-            onPressed: () =>  Navigator.of(context).pushNamed(FiltersScreen.routeName),
-          ),
-        ],
-      ),
+      appBar: appBar,
+      // AppBar(
+      //   title: Text(_pages[_selectedPageIndex]['title']),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: Icon(Icons.sync_alt),
+      //       onPressed: () =>  Navigator.of(context).pushNamed(FiltersScreen.routeName),
+      //     ),
+      //   ],
+      // ),
       //drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: Platform.isIOS

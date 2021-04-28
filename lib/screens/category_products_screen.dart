@@ -61,7 +61,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
         middle: Text(categoryTitle),
-        leading: MainDrawer(),
+        //leading: MainDrawer(),
           )
         : AppBar(
             //backgroundColor: Colors.purpleAccent,
