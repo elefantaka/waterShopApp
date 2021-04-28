@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water_shop_app/widgets/main_drawer.dart';
@@ -40,24 +42,63 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Filters'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () {
-              final selectedFilters = {
-                'women': _women,
-                'men': _men,
-                'color': _color,
-                'black': _black,
-              };
-              widget.saveFilters(selectedFilters);
-            },
-          ),
-        ],
+    final PreferredSizeWidget appBar = Platform.isIOS
+    ? CupertinoNavigationBar(middle: Text('Filters'), leading: GestureDetector( child: Card(
+      color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      child: Row(
+          children: <Widget>[
+      IconButton(
+      icon: Icon(CupertinoIcons.doc), onPressed: () {
+        final selectedFilters = {
+          'women': _women,
+          'men': _men,
+          'color': _color,
+          'black': _black,
+        };
+        widget.saveFilters(selectedFilters);
+      },
       ),
+          ],),
+    ),
+    ),
+    )
+        : AppBar(
+      title: Text('Filters'),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.save),
+          onPressed: () {
+            final selectedFilters = {
+              'women': _women,
+              'men': _men,
+              'color': _color,
+              'black': _black,
+            };
+            widget.saveFilters(selectedFilters);
+          },
+        ),
+      ],
+    );
+    return Scaffold(
+      appBar: appBar,
+      // AppBar(
+      //   title: Text('Filters'),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: Icon(Icons.save),
+      //       onPressed: () {
+      //         final selectedFilters = {
+      //           'women': _women,
+      //           'men': _men,
+      //           'color': _color,
+      //           'black': _black,
+      //         };
+      //         widget.saveFilters(selectedFilters);
+      //       },
+      //     ),
+      //   ],
+      // ),
       //drawer: MainDrawer(),
       body: Column(
         children: <Widget>[

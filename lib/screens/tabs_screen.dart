@@ -98,13 +98,17 @@ class _TabsScreenState extends State<TabsScreen> {
         ? CupertinoNavigationBar(
             middle: Text(_pages[_selectedPageIndex]['title']),
             leading: GestureDetector(
-              child: Row(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(CupertinoIcons.arrow_right_arrow_left),
-                    onPressed: () => Navigator.of(context).pushNamed(FiltersScreen.routeName),
-                  ),
-                ],
+              child: Card(
+                color: Colors.transparent,
+                shadowColor: Colors.transparent,
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(CupertinoIcons.arrow_right_arrow_left),
+                      onPressed: () => Navigator.of(context).pushNamed(FiltersScreen.routeName),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
@@ -133,7 +137,7 @@ class _TabsScreenState extends State<TabsScreen> {
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: Platform.isIOS
           ? CupertinoTabBar(onTap: _selectPage,
-        backgroundColor: Colors.blue, //Theme.of(context).primaryColor,
+        //backgroundColor: Colors.blue, //Theme.of(context).primaryColor,
         currentIndex: _selectedPageIndex, items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             backgroundColor: Theme
