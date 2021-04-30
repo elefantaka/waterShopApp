@@ -49,9 +49,10 @@ class ProductDetailScreen extends StatelessWidget {
             title: Text('${selectedProduct.title}'),
           );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${selectedProduct.title}'),
-      ),
+      appBar: appBar,
+      // appBar: AppBar(
+      //   title: Text('${selectedProduct.title}'),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
