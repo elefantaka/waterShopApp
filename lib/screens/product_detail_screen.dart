@@ -42,15 +42,16 @@ class ProductDetailScreen extends StatelessWidget {
     final productId = ModalRoute.of(context).settings.arguments as String;
     final selectedProduct = PRODUCTS.firstWhere((product) => product.id == productId);
     final PreferredSizeWidget appBar = Platform.isIOS
-    ? CupertinoNavigationBar(middle: Text('${selectedProduct.title}'),)
-    : AppBar(
-      title: Text('${selectedProduct.title}'),
-    );
+        ? CupertinoNavigationBar(
+            middle: Text('${selectedProduct.title}'),
+          )
+        : AppBar(
+            title: Text('${selectedProduct.title}'),
+          );
     return Scaffold(
-      appBar: appBar,
-      // AppBar(
-      //   title: Text('${selectedProduct.title}'),
-      // ),
+      appBar: AppBar(
+        title: Text('${selectedProduct.title}'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

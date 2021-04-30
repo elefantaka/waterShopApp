@@ -105,20 +105,22 @@ class CupertinoSwitchListTile extends StatelessWidget {
     return new MergeSemantics(
       child: ListTileTheme.merge(
         selectedColor: activeColor ?? CupertinoColors.activeGreen,
-        child: new ListTile(
-          leading: secondary,
-          title: title,
-          subtitle: subtitle,
-          trailing: control,
-          isThreeLine: isThreeLine,
-          dense: dense,
-          enabled: onChanged != null,
-          onTap: onChanged != null
-              ? () {
-            onChanged(!value);
-          }
-              : null,
-          selected: selected,
+        child: Material(
+          child: new ListTile(
+            leading: secondary,
+            title: title,
+            subtitle: subtitle,
+            trailing: control,
+            isThreeLine: isThreeLine,
+            dense: dense,
+            enabled: onChanged != null,
+            onTap: onChanged != null
+                ? () {
+              onChanged(!value);
+            }
+                : null,
+            selected: selected,
+          ),
         ),
       ),
     );
